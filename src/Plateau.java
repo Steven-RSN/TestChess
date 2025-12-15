@@ -8,14 +8,12 @@ public class Plateau {
 
     public Plateau() {
         this.terrain = new Case[colonneMax][ligneMax];
-
     }
 
     public Plateau(int colonneMax, int ligneMax) {
         this.ligneMax = ligneMax;
         this.colonneMax = colonneMax;
         this.terrain = new Case[colonneMax][ligneMax];
-        ;
     }
 
     public int getColonneMax() {
@@ -62,6 +60,7 @@ public class Plateau {
     }
 
     public void printPlateauSchema(){
+        System.out.println("- - - Blanc - - -");
 
         System.out.println(" _ _ _ _ _ _ _ _ ");
 
@@ -75,5 +74,7 @@ public class Plateau {
         };
         System.out.println(' ');
         System.out.println(" _ _ _ _ _ _ _ _ ");
+        System.out.println("- - - Noir - - - ");
+
     }
 }

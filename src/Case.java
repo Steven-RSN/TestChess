@@ -67,7 +67,7 @@ public class Case extends Plateau {
 
     public void getCaseMemo() {
         System.out.print(
-            "  [" + (this.status ? 'O' : 'X') + ']'
+            "  [" + (this.status ? this.getPiece().getCouleur().equals("Blanc")?'B':'N' : ' ') + ']'
         );
     }
 
