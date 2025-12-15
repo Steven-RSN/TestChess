@@ -37,7 +37,7 @@ void main() {
         Pion pionB =new Pion("pionB"+i,"Blanc",casePionB);
         casePionB.setPiece(pionB);
         casePionB.setStatus(true);
-    };
+    }
 
 
     //test des
