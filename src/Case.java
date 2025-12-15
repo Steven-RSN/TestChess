@@ -59,15 +59,15 @@ public class Case extends Plateau {
     public void getCaseInfo() {
         System.out.print(
 
-                "| Position  : " + this.posColonne + '.' + this.posLigne +
-                        " Couleur : " + this.couleur +
-                        " Status : " + isOccuper() + " |"
+                "| Position: " + this.posColonne + '-' + this.posLigne +
+                        "  Couleur: " + this.couleur +
+                        "  Status: " + isOccuper() + " |"
         );
     }
 
     public void getCaseMemo() {
         System.out.print(
-            "  [" + (this.status ? this.getPiece().getCouleur().equals("Blanc")?'B':'N' : ' ') + ']'
+                "  [" + (this.status ? this.getPiece().getNom() : "   ") + ']'
         );
     }
 

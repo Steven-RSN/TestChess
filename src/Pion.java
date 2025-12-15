@@ -6,7 +6,7 @@ public class Pion extends Pieces {
 
     }
 
-    public void avancer(Plateau plateau) {
+    public Boolean avancer(Plateau plateau) {
         Case currentPos = this.getPosition();
         String couleurPion = this.getCouleur();
         int direction = couleurPion.equals("Noir") ? -1 : +1;
@@ -14,13 +14,14 @@ public class Pion extends Pieces {
 
         if (nextPosLine < 0 || nextPosLine >= plateau.getLigneMax()) {
             System.out.println("Vous ne pouvez pas déplacer la pièce en dehors du plateau");
-            return;
+            return false;
         }
         Case nextCase = plateau.terrain[currentPos.getPosColonne()][nextPosLine];
 
         if (nextCase.getStatus()) {
             System.out.println("La case en face de vous est occupée");
-        } else {
+            return false;
+        }
             System.out.println("La piece avance");
             // L'ancienne case devient vide
             currentPos.setStatus(false);
@@ -32,7 +33,12 @@ public class Pion extends Pieces {
             // La nouvelle case devient occupée
             nextCase.setStatus(true);
             nextCase.setPiece(this);
-        }
+
+            //Met fin au tour du joueur
+            return true;
+
+
+
 
     }
 

@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Partie {
     private Joueur joueur1;
     private Joueur joueur2;
@@ -38,12 +40,12 @@ public class Partie {
     public void placerPieces() {
         for (int i = 0; i < plateau.getColonneMax(); i++) {
             Case casePionN = plateau.terrain[i][plateau.getLigneMax() - 1];
-            Pion pionN = new Pion("pionN" + (i + 1), "Noir", casePionN);
+            Pion pionN = new Pion("Np" + (i + 1), "Noir", casePionN);
             casePionN.setPiece(pionN);
             casePionN.setStatus(true);
 
             Case casePionB = plateau.terrain[i][0];
-            Pion pionB = new Pion("pionB" + (i + 1), "Blanc", casePionB);
+            Pion pionB = new Pion("Bp" + (i + 1), "Blanc", casePionB);
             casePionB.setPiece(pionB);
             casePionB.setStatus(true);
         }
@@ -69,6 +71,23 @@ public class Partie {
     }
 
     public void lancerPartie() {
-        //boucle while true/false
+        Scanner scanner= new Scanner(System.in);
+        System.out.println(" - - -  La partie est lancé - - -");
+
+        //boucle while gagnant =>true/false
+        while (true){
+
+            //boucle while tour j1 =>true/false
+            while (joueur1.isJoue()){
+                System.out.println("Cest à votre tour de jouer");
+                System.out.println("Quel piece voulez vous déplacer ? ");
+                scanner.next();
+
+            }
+            //boucle while tour j2 =>true/false
+            while (joueur2.isJoue()){
+
+            }
+        }
     }
 }
