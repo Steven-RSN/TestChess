@@ -1,6 +1,13 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 void main() {
+
+    //TODO :
+    // Créer la class Partie
+    // A déplacer dans la class Partie
+
+
+    //Creation du plateau (matris d'objet Case)
     Plateau plateau = new Plateau();
     for (int i = 0; i < plateau.getColonneMax(); i++) {
 
@@ -18,6 +25,8 @@ void main() {
         }
     }
 
+
+    //Future methode de la class Partie pour placer les pions
     for(int i =0 ; i<plateau.getColonneMax();i++) {
         Case casePionN=plateau.terrain[i][plateau.getLigneMax()-1];
         Pion pionN=new Pion("pionN"+i,"Noir",casePionN);
@@ -30,6 +39,8 @@ void main() {
         casePionB.setStatus(true);
     };
 
+
+    //test des
     plateau.printPlateauTexte();
     plateau.printPlateauSchema();
 
