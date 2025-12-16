@@ -70,15 +70,36 @@ public class Partie {
         }
     }
 
+    public void logo() {
+
+        System.out.print(
+                "\n" +
+                 "      _\n" +
+                 "  ___| |__   ___  ___ ___\n" +
+                 " / __| |_ \\ / _ \\/ __/ __|\n" +
+                 "| (__| | | |  __/\\__ \\__ \\\n" +
+                 " \\___|_| |_|\\___||___/___/\n"+
+
+                   "          ____    _   __   __ _____\n" +
+                   "         / ___|  / \\  |  \\/  |  ___|\n" +
+                   "        | |  _  / _ \\ | |\\/| |  _|\n" +
+                   "        | |_| |/ ___ \\| |  | | |___\n" +
+                   "         \\____/_/   \\_\\ |  |_|_____|\n"+
+                        " \n       "
+
+        );
+    }
+
+
     public void lancerPartie() {
-        Scanner scanner= new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println(" - - -  La partie est lancé - - -");
 
         //boucle while gagnant =>true/false
-        while (true){
+        while (true) {
 
             //boucle while tour j1 =>true/false
-            while (joueur1.isJoue()){
+            while (joueur1.isJoue()) {
                 System.out.println("Cest à votre tour de jouer");
                 System.out.println("Quel piece voulez vous déplacer ? ");
                 scanner.next();
@@ -88,7 +109,7 @@ public class Partie {
 
             }
             //boucle while tour j2 =>true/false
-            while (joueur2.isJoue()){
+            while (joueur2.isJoue()) {
 
             }
         }

@@ -45,6 +45,7 @@ void main() {
 
     Partie partie = new Partie(j1, j2,plateau);
     partie.initPartie();
+    partie.logo();
     partie.placerPieces();
 
 
