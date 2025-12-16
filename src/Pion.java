@@ -3,9 +3,9 @@ public class Pion extends Pieces {
 
     public Pion(String nom, String couleur, Case position) {
         super(nom, couleur, true, position, "Pion");
-
     }
 
+    //return True pour terminer le tour, sinon return false
     public Boolean avancer(Plateau plateau) {
         Case currentPos = this.getPosition();
         String couleurPion = this.getCouleur();
@@ -37,11 +37,10 @@ public class Pion extends Pieces {
             //Met fin au tour du joueur
             return true;
 
-
-
-
     }
 
+    //TODO:
+    // return True pour terminer le tour, sinon return false
     public void manger(Plateau plateau, String direction) {
         Case currentPos = this.getPosition();
         String couleurPion = this.getCouleur();
@@ -79,7 +78,6 @@ public class Pion extends Pieces {
         // La nouvelle case devient occupée
         nextCase.setStatus(true);
         nextCase.setPiece(this);
-
 
     }
 

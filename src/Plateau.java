@@ -1,8 +1,8 @@
-import java.util.ArrayList;
 
 public class Plateau {
     private int colonneMax = 3;
     private int ligneMax = 3;
+    //terrain en public ???
     public Case[][] terrain;
 
 

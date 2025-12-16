@@ -3,8 +3,23 @@
 void main() {
 
     //TODO :
-    // Créer la class Partie
-    // A déplacer dans la class Partie
+    // Créer la class Lexique/commandes -> interagire avec le jeu!
+
+    /*
+    //Bloc a garder et a integrer a l'affichage !!!!
+    Charset utf8Charset = Charset.forName("UTF-8");
+    Charset defaultCharset = Charset.defaultCharset();
+    System.out.println(defaultCharset);
+
+    //Unicode: PionNoir / PionBlanc !!
+    String unicodeMessage = "\u2659\u265F";
+
+    ///mais quelle dinguerie !!
+    System.out.println(unicodeMessage);
+    */
+
+
+
 
 
     //Creation du plateau (matris d'objet Case)
