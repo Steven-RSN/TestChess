@@ -82,6 +82,9 @@ public class Partie {
                 System.out.println("Cest à votre tour de jouer");
                 System.out.println("Quel piece voulez vous déplacer ? ");
                 scanner.next();
+                //code...
+                //récupère si déplacement ou manger renvoie true
+
 
             }
             //boucle while tour j2 =>true/false
