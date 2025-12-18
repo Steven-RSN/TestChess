@@ -97,21 +97,55 @@ public class Partie {
 
         //boucle while gagnant =>true/false
         while (true) {
-
+            joueur1.setJoue(true);
+            joueur2.setJoue(true);
             //boucle while tour j1 =>true/false
             while (joueur1.isJoue()) {
+
                 System.out.println("Cest à votre tour de jouer");
-                System.out.println("Quel piece voulez vous déplacer ? ");
-                scanner.next();
+                //System.out.println("Quel piece voulez vous déplacer ? ");
+                //scanner.next();
+                // System.out.println("Cest aux blanc de jouer");
+
+                System.out.println("Ligne de la piece deplacer ?");
+                int ligne_piece_a_deplacer = scanner.nextInt();
+                System.out.println("Colonne de la piece deplacer ?");
+                int colonne_piece_a_deplacer = scanner.nextInt();
+
+                Pion pion_a_deplacer = (Pion) plateau.terrain[colonne_piece_a_deplacer][ligne_piece_a_deplacer].getPiece();
+
+                if (pion_a_deplacer == null) {
+                    System.out.println("La case selectionnee est vide");
+                } else {
+                    joueur1.setJoue(!pion_a_deplacer.avancer(plateau));
+                }
                 //code...
                 //récupère si déplacement ou manger renvoie true
 
 
             }
+            plateau.printPlateauSchema();
             //boucle while tour j2 =>true/false
             while (joueur2.isJoue()) {
 
+                System.out.println("Cest aux noirs de jouer");
+                System.out.println("Ligne de la piece deplacer ?");
+                int ligne_piece_a_deplacer = scanner.nextInt();
+                System.out.println("Colonne de la piece deplacer ?");
+                int colonne_piece_a_deplacer = scanner.nextInt();
+
+                Pion pion_a_deplacer = (Pion) plateau.terrain[colonne_piece_a_deplacer][ligne_piece_a_deplacer].getPiece();
+                System.out.println("Vous avez selectionné" + pion_a_deplacer.getNom());
+
+                if (pion_a_deplacer == null) {
+                    System.out.println("La case selectionnee est vide");
+                } else {
+                    joueur2.setJoue(!pion_a_deplacer.avancer(plateau));
+                }
             }
+
+            //plateau.printPlateauTexte();
+            plateau.printPlateauSchema();
         }
     }
 }

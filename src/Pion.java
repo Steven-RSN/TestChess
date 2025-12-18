@@ -1,8 +1,43 @@
+import java.util.ArrayList;
+
 public class Pion extends Pieces {
-    //private
+    private String unicode="u265";
 
     public Pion(String nom, String couleur, Case position) {
         super(nom, couleur, true, position, "Pion");
+    }
+
+    //A refactoriser
+    public ArrayList<Case> deplacement_possibles(Plateau plateau) {
+
+        Case currentPos = this.getPosition();
+        String couleurPion = this.getCouleur();
+
+        int direction = couleurPion.equals("Noir") ? -1 : +1;
+        int nextPosLine = currentPos.getPosLigne() + direction;
+
+        ArrayList<Case> deplacement_possibles = new ArrayList<>();
+
+
+        if (plateau.terrain[currentPos.getPosColonne()][nextPosLine].getStatus() == false) {
+            deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne(), nextPosLine));
+        }
+
+        if (currentPos.getPosColonne() + 1 <= plateau.getColonneMax() ){
+            if (plateau.terrain[currentPos.getPosColonne() + 1][nextPosLine].getStatus() == true &&
+                    !plateau.terrain[currentPos.getPosColonne() + 1][nextPosLine].getPiece().getCouleur().equals(couleurPion)) {
+                deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne(), nextPosLine));
+            }
+        }
+
+        if (currentPos.getPosColonne() - 1 >= plateau.getLigneMax() ) {
+            if (plateau.terrain[currentPos.getPosColonne() - 1][nextPosLine].getStatus() == true &&
+                    !plateau.terrain[currentPos.getPosColonne() - 1][nextPosLine].getPiece().getCouleur().equals(couleurPion)) {
+                deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne(), nextPosLine));
+            }
+        }
+
+        return deplacement_possibles;
     }
 
     //return True pour terminer le tour, sinon return false

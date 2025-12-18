@@ -5,7 +5,7 @@ void main() {
     //TODO :
     // Créer la class Lexique/commandes -> interagire avec le jeu!
 
-    /*
+
     //Bloc a garder et a integrer a l'affichage !!!!
     Charset utf8Charset = Charset.forName("UTF-8");
     Charset defaultCharset = Charset.defaultCharset();
@@ -16,7 +16,6 @@ void main() {
 
     ///mais quelle dinguerie !!
     System.out.println(unicodeMessage);
-    */
 
 
 
@@ -29,7 +28,12 @@ void main() {
     System.out.println("Nom joueur1 :");
     String j1Nom = scanner.next();
     System.out.println("Votre couleur : 'Blanc' / 'Noir' :");
+
     String j1Couleur = scanner.next();
+ //   while (!j1Couleur.equals("Blanc") || !j1Couleur.equals("Noir")){
+
+  //  }
+
     System.out.println("Nom joueur2 :");
 
 
@@ -49,42 +53,11 @@ void main() {
     partie.placerPieces();
 
 
-  /*
-    for (int i = 0; i < plateau.getColonneMax(); i++) {
-
-        for (int j = 0; j < plateau.getLigneMax(); j++) {
-            String couleur;
-            if ((i+j) % 2 == 0) {
-                couleur = "Blanc";
-
-            } else {
-                couleur = "Noir";
-            }
-
-            Case currentCase = new Case(couleur, i, j);
-            plateau.terrain[i][j] = currentCase;
-        }
-    }
-
-
-    //Future methode de la class Partie pour placer les pions
-    for(int i =0 ; i<plateau.getColonneMax();i++) {
-        Case casePionN=plateau.terrain[i][plateau.getLigneMax()-1];
-        Pion pionN=new Pion("pionN"+(i+1),"Noir",casePionN);
-        casePionN.setPiece(pionN);
-        casePionN.setStatus(true);
-
-        Case casePionB=plateau.terrain[i][0];
-        Pion pionB =new Pion("pionB"+(i+1),"Blanc",casePionB);
-        casePionB.setPiece(pionB);
-        casePionB.setStatus(true);
-    }
-*/
-
     //test
     plateau.printPlateauTexte();
     plateau.printPlateauSchema();
-
+    partie.lancerPartie();
+    /*
     Pion pionBlanc2 = (Pion) plateau.terrain[1][2].getPiece();
     pionBlanc2.avancer(plateau);
     plateau.printPlateauTexte();
@@ -93,14 +66,5 @@ void main() {
     pionBlanc2.manger(plateau, "Droite");
     plateau.printPlateauSchema();
 
-    //  pionBlanc1.avancer();
+    //  pionBlanc1.avancer();*/
 }
-/*
-public void initJoueur(sc){
-    System.out.println("Nom joueur1 :");
-    String j1Nom = sc.next();
-    System.out.println("Votre couleur : 'Blanc' / 'Noir' :");
-    String j1Couleur = sc.next();
-    System.out.println("Nom joueur2 :");
-}
-*/
