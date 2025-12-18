@@ -6,13 +6,15 @@ public class Pieces {
     private String type;
     private Boolean enJeux;
     private Case position;
+    private String unicode;
 
-    public Pieces( String nom,String couleur,boolean enJeux,Case position,String type) {
+    public Pieces( String nom,String couleur,boolean enJeux,Case position,String type,String unicode) {
         this.nom=nom;
         this.couleur=couleur;
         this.enJeux=enJeux;
         this.position=position;
         this.type=type;
+        this.unicode=unicode;
 
     }
     /*public Pieces() {
@@ -50,7 +52,22 @@ public class Pieces {
         this.enJeux = enJeux;
     }
 
-  /*  public void avancer(){
+    public String getUnicode() {
+        return unicode;
+    }
+
+    public void setUnicode(String unicode) {
+        this.unicode = unicode;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+/*  public void avancer(){
         Case pos = this.getPosition();
         System.out.println(pos);
         //if(){}

@@ -21,7 +21,7 @@ void main() {
 
 
 
-    //Creation du plateau (matris d'objet Case)
+    //Creation du plateau (matrice d'objet Case)
     Plateau plateau = new Plateau();
     Scanner scanner = new Scanner(System.in);
     //initJoueur(Scanner);

@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class Pion extends Pieces {
-    private String unicode="u265";
+    private String unicode;
 
-    public Pion(String nom, String couleur, Case position) {
-        super(nom, couleur, true, position, "Pion");
+    public Pion(String nom, String couleur, Case position, String unicode) {
+        super(nom, couleur, true, position, "Pion", unicode);
     }
 
     //A refactoriser
@@ -23,17 +23,17 @@ public class Pion extends Pieces {
             deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne(), nextPosLine));
         }
 
-        if (currentPos.getPosColonne() + 1 <= plateau.getColonneMax() ){
+        if (currentPos.getPosColonne() + 1 < plateau.getColonneMax() ){
             if (plateau.terrain[currentPos.getPosColonne() + 1][nextPosLine].getStatus() == true &&
                     !plateau.terrain[currentPos.getPosColonne() + 1][nextPosLine].getPiece().getCouleur().equals(couleurPion)) {
-                deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne(), nextPosLine));
+                deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne()+1, nextPosLine));
             }
         }
+        if (currentPos.getPosColonne() - 1 >= 0 ) {
 
-        if (currentPos.getPosColonne() - 1 >= plateau.getLigneMax() ) {
             if (plateau.terrain[currentPos.getPosColonne() - 1][nextPosLine].getStatus() == true &&
                     !plateau.terrain[currentPos.getPosColonne() - 1][nextPosLine].getPiece().getCouleur().equals(couleurPion)) {
-                deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne(), nextPosLine));
+                deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne()-1, nextPosLine));
             }
         }
 

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Partie {
@@ -40,12 +41,12 @@ public class Partie {
     public void placerPieces() {
         for (int i = 0; i < plateau.getColonneMax(); i++) {
             Case casePionN = plateau.terrain[i][plateau.getLigneMax() - 1];
-            Pion pionN = new Pion("Np" + (i + 1), "Noir", casePionN);
+            Pion pionN = new Pion("Np" + (i + 1), "Noir", casePionN, "♙");
             casePionN.setPiece(pionN);
             casePionN.setStatus(true);
 
             Case casePionB = plateau.terrain[i][0];
-            Pion pionB = new Pion("Bp" + (i + 1), "Blanc", casePionB);
+            Pion pionB = new Pion("Bp" + (i + 1), "Blanc", casePionB, "♟");
             casePionB.setPiece(pionB);
             casePionB.setStatus(true);
         }
@@ -113,6 +114,16 @@ public class Partie {
                 int colonne_piece_a_deplacer = scanner.nextInt();
 
                 Pion pion_a_deplacer = (Pion) plateau.terrain[colonne_piece_a_deplacer][ligne_piece_a_deplacer].getPiece();
+                //pion_a_deplacer.deplacement_possibles(plateau);
+                //parcourir la tab de deplacement possible !!
+                ArrayList<Case> temp = pion_a_deplacer.deplacement_possibles(plateau);
+                if(temp.isEmpty()){
+                    System.out.println("PROBLEME");
+                }
+                for (Case c : temp){
+                    System.out.println("test des liste de case");
+                    System.out.println(c.getPosColonne() + ":" + c.getPosLigne());
+                }
 
                 if (pion_a_deplacer == null) {
                     System.out.println("La case selectionnee est vide");

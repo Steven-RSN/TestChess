@@ -67,7 +67,7 @@ public class Case extends Plateau {
 
     public void getCaseMemo() {
         System.out.print(
-                "  [" + (this.status ? this.getPiece().getNom() : "   ") + ']'
+                "  [" + (this.status ? this.getPiece().getUnicode(): "  ") + ']'
         );
     }
 
