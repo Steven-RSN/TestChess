@@ -1,7 +1,7 @@
 
 public class Plateau {
-    private int colonneMax = 3;
-    private int ligneMax = 3;
+    private int colonneMax = 4;
+    private int ligneMax = 4;
     //terrain en public ???
     public Case[][] terrain;
 
@@ -60,9 +60,8 @@ public class Plateau {
     }
 
     public void printPlateauSchema(){
-        System.out.println("- - - Blanc - - -");
 
-        System.out.println(" _ _ _ _ _ _ _ _ ");
+        System.out.println("  _  _  _  _  B  _  _  _  _ ");
 
         for(int i =0 ; i<this.getLigneMax();i++) {
             System.out.println("   ");
@@ -72,9 +71,10 @@ public class Plateau {
                 this.terrain[j][i].getCaseMemo();
             }
         };
-        System.out.println(' ');
-        System.out.println(" _ _ _ _ _ _ _ _ ");
-        System.out.println("- - - Noir - - - ");
+        System.out.println("  ");
+        System.out.println("    ");
+        System.out.println("  _  _  _  _  N  _  _  _  _ ");
+
 
     }
 }

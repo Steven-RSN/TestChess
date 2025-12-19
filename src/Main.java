@@ -55,7 +55,7 @@ void main() {
 
     //test
     plateau.printPlateauTexte();
-    plateau.printPlateauSchema();
+   // plateau.printPlateauSchema();
     partie.lancerPartie();
     /*
     Pion pionBlanc2 = (Pion) plateau.terrain[1][2].getPiece();

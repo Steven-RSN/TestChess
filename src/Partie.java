@@ -94,7 +94,13 @@ public class Partie {
 
     public void lancerPartie() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(" - - -  La partie est lancé - - -");
+        System.out.println("  ");
+        System.out.println("  __| -  -  -  -  -  -  -  -  -  -  |__");
+        System.out.println("____|   *  La partie est lancé  *   |____");
+        System.out.println("  __| -  -  -  -  -  -  -  -  -  -  |__");
+        System.out.println("  ");
+        plateau.printPlateauSchema();
+        System.out.println("  ");
 
         //boucle while gagnant =>true/false
         while (true) {
