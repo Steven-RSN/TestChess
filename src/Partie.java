@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Partie {
@@ -75,17 +76,17 @@ public class Partie {
 
         System.out.print(
                 "\n" +
-                 "      _\n" +
-                 "  ___| |__   ___  ___ ___\n" +
-                 " / __| |_ \\ / _ \\/ __/ __|\n" +
-                 "| (__| | | |  __/\\__ \\__ \\\n" +
-                 " \\___|_| |_|\\___||___/___/\n"+
+                        "      _\n" +
+                        "  ___| |__   ___  ___ ___\n" +
+                        " / __| |_ \\ / _ \\/ __/ __|\n" +
+                        "| (__| | | |  __/\\__ \\__ \\\n" +
+                        " \\___|_| |_|\\___||___/___/\n" +
 
-                   "          ____    _   __   __ _____\n" +
-                   "         / ___|  / \\  |  \\/  |  ___|\n" +
-                   "        | |  _  / _ \\ | |\\/| |  _|\n" +
-                   "        | |_| |/ ___ \\| |  | | |___\n" +
-                   "         \\____/_/   \\_\\ |  |_|_____|\n"+
+                        "          ____    _   __   __ _____\n" +
+                        "         / ___|  / \\  |  \\/  |  ___|\n" +
+                        "        | |  _  / _ \\ | |\\/| |  _|\n" +
+                        "        | |_| |/ ___ \\| |  | | |___\n" +
+                        "         \\____/_/   \\_\\ |  |_|_____|\n" +
                         " \n       "
 
         );
@@ -94,6 +95,7 @@ public class Partie {
 
     public void lancerPartie() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("  ");
         System.out.println("  ");
         System.out.println("  __| -  -  -  -  -  -  -  -  -  -  |__");
         System.out.println("____|   *  La partie est lancé  *   |____");
@@ -104,65 +106,105 @@ public class Partie {
 
         //boucle while gagnant =>true/false
         while (true) {
-            joueur1.setJoue(true);
-            joueur2.setJoue(true);
-            //boucle while tour j1 =>true/false
-            while (joueur1.isJoue()) {
+            try {
+                joueur1.setJoue(true);
+                joueur2.setJoue(true);
 
-                System.out.println("Cest à votre tour de jouer");
-                //System.out.println("Quel piece voulez vous déplacer ? ");
-                //scanner.next();
-                // System.out.println("Cest aux blanc de jouer");
+                //boucle while tour j1 =>true/false
+                while (joueur1.isJoue()) {
 
+                    System.out.println("C'est à " + joueur1.getNom() + " (" + joueur1.getCouleur() + ") de jouer");
+                    Pieces piecesChoisi = joueur1.selectionPiece(scanner, plateau);
+                    if (piecesChoisi == null || !piecesChoisi.getCouleur().equals(joueur1.getCouleur())){
+                        System.out.println("Vous n'avez pas de pièce à cet endroit");
+                        continue;
+                    }
+
+                /* switch (piecesChoisi.getType()) {
+                    case "Pion":
+                        System.out.println("c'est un pion !!!!");
+                        piecesChoisi = (Pion) piecesChoisi;
+
+                        break;
+                    case "Roi":
+                        // code
+                        break;
+                    case "Tour":
+                        //code
+                    default:
+
+                }*/
+
+                    ArrayList<Case> temp = piecesChoisi.deplacement_possibles(plateau);
+
+                    if (temp.isEmpty()) {
+                        System.out.println("PROBLEME");
+                    }
+
+                    ArrayList<String> deplacementTab = new ArrayList<>();
+                    for (Case c : temp) {
+                        System.out.println(c.getPosColonne() + ":" + c.getPosLigne());
+                        deplacementTab.add(c.getPosColonne() + "-" + c.getPosLigne());
+                    }
+
+                    System.out.println("Indiquez les coordonée de déplacement: colonne-ligne ou taper annuler");
+                    String futureCase = scanner.next().trim();
+
+                    if (futureCase.equals("annuler")) {
+                        continue;
+                    } else if (deplacementTab.contains(futureCase)) {
+                        System.out.println("Déplacement ok !");
+                        String[] parts = futureCase.split("-");
+                        int colSaisie = Integer.parseInt(parts[0]);
+                        int ligSaisie = Integer.parseInt(parts[1]);
+                        piecesChoisi.avancerColLine(colSaisie, ligSaisie, plateau);
+                        joueur1.setJoue(false);
+
+                    } else {
+                        System.out.println("Déplacement invalide !!");
+                    }
+                /*
                 System.out.println("Ligne de la piece deplacer ?");
                 int ligne_piece_a_deplacer = scanner.nextInt();
                 System.out.println("Colonne de la piece deplacer ?");
                 int colonne_piece_a_deplacer = scanner.nextInt();
-
                 Pion pion_a_deplacer = (Pion) plateau.terrain[colonne_piece_a_deplacer][ligne_piece_a_deplacer].getPiece();
-                //pion_a_deplacer.deplacement_possibles(plateau);
-                //parcourir la tab de deplacement possible !!
-                ArrayList<Case> temp = pion_a_deplacer.deplacement_possibles(plateau);
-                if(temp.isEmpty()){
-                    System.out.println("PROBLEME");
-                }
-                for (Case c : temp){
-                    System.out.println("test des liste de case");
-                    System.out.println(c.getPosColonne() + ":" + c.getPosLigne());
-                }
 
-                if (pion_a_deplacer == null) {
+                if (pion_a_deplacer == null || ) {
                     System.out.println("La case selectionnee est vide");
                 } else {
                     joueur1.setJoue(!pion_a_deplacer.avancer(plateau));
+                }*/
+                    //code...
+                    //récupère si déplacement ou manger renvoie true
+
                 }
-                //code...
-                //récupère si déplacement ou manger renvoie true
 
+                plateau.printPlateauSchema();
+                //boucle while tour j2 =>true/false
+                while (joueur2.isJoue()) {
 
-            }
-            plateau.printPlateauSchema();
-            //boucle while tour j2 =>true/false
-            while (joueur2.isJoue()) {
+                    System.out.println("C'est à " + joueur2.getNom() + " (" + joueur2.getCouleur() + ") de jouer");
+                    System.out.println("Colonne de la piece deplacer ?");
+                    int colonne_piece_a_deplacer = scanner.nextInt();
+                    System.out.println("Ligne de la piece deplacer ?");
+                    int ligne_piece_a_deplacer = scanner.nextInt();
 
-                System.out.println("Cest aux noirs de jouer");
-                System.out.println("Ligne de la piece deplacer ?");
-                int ligne_piece_a_deplacer = scanner.nextInt();
-                System.out.println("Colonne de la piece deplacer ?");
-                int colonne_piece_a_deplacer = scanner.nextInt();
+                    Pion pion_a_deplacer = (Pion) plateau.terrain[colonne_piece_a_deplacer][ligne_piece_a_deplacer].getPiece();
+                    System.out.println("Vous avez selectionné" + pion_a_deplacer.getNom());
 
-                Pion pion_a_deplacer = (Pion) plateau.terrain[colonne_piece_a_deplacer][ligne_piece_a_deplacer].getPiece();
-                System.out.println("Vous avez selectionné" + pion_a_deplacer.getNom());
-
-                if (pion_a_deplacer == null) {
-                    System.out.println("La case selectionnee est vide");
-                } else {
-                    joueur2.setJoue(!pion_a_deplacer.avancer(plateau));
+                    if (pion_a_deplacer == null) {
+                        System.out.println("La case selectionnee est vide");
+                    } else {
+                        joueur2.setJoue(!pion_a_deplacer.avancer(plateau));
+                    }
                 }
-            }
 
-            //plateau.printPlateauTexte();
-            plateau.printPlateauSchema();
+                //plateau.printPlateauTexte();
+                plateau.printPlateauSchema();
+            } catch (Exception e) {
+                throw new NullPointerException();
+            }
         }
     }
 }

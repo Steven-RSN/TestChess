@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Pieces {
 
@@ -13,7 +14,7 @@ public class Pieces {
         this.couleur=couleur;
         this.enJeux=enJeux;
         this.position=position;
-        this.type=type;
+        this.type="Pieces";
         this.unicode=unicode;
 
     }
@@ -66,6 +67,12 @@ public class Pieces {
 
     public void setType(String type) {
         this.type = type;
+    }
+    public ArrayList<Case> deplacement_possibles(Plateau plateau) {
+        return  null;
+    };
+    public Boolean avancerColLine(int col, int line , Plateau plateau) {
+        return  null;
     }
 /*  public void avancer(){
         Case pos = this.getPosition();

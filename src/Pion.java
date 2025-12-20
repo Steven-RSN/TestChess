@@ -23,17 +23,17 @@ public class Pion extends Pieces {
             deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne(), nextPosLine));
         }
 
-        if (currentPos.getPosColonne() + 1 < plateau.getColonneMax() ){
+        if (currentPos.getPosColonne() + 1 < plateau.getColonneMax()) {
             if (plateau.terrain[currentPos.getPosColonne() + 1][nextPosLine].getStatus() == true &&
                     !plateau.terrain[currentPos.getPosColonne() + 1][nextPosLine].getPiece().getCouleur().equals(couleurPion)) {
-                deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne()+1, nextPosLine));
+                deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne() + 1, nextPosLine));
             }
         }
-        if (currentPos.getPosColonne() - 1 >= 0 ) {
+        if (currentPos.getPosColonne() - 1 >= 0) {
 
             if (plateau.terrain[currentPos.getPosColonne() - 1][nextPosLine].getStatus() == true &&
                     !plateau.terrain[currentPos.getPosColonne() - 1][nextPosLine].getPiece().getCouleur().equals(couleurPion)) {
-                deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne()-1, nextPosLine));
+                deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne() - 1, nextPosLine));
             }
         }
 
@@ -57,20 +57,52 @@ public class Pion extends Pieces {
             System.out.println("La case en face de vous est occupée");
             return false;
         }
-            System.out.println("La piece avance");
-            // L'ancienne case devient vide
-            currentPos.setStatus(false);
-            currentPos.setPiece(null);
 
-            // La position du pion change
-            this.setPosition(nextCase);
+        System.out.println("La piece avance");
+        // L'ancienne case devient vide
+        currentPos.setStatus(false);
+        currentPos.setPiece(null);
 
-            // La nouvelle case devient occupée
-            nextCase.setStatus(true);
-            nextCase.setPiece(this);
+        // La position du pion change
+        this.setPosition(nextCase);
 
-            //Met fin au tour du joueur
-            return true;
+        // La nouvelle case devient occupée
+        nextCase.setStatus(true);
+        nextCase.setPiece(this);
+
+        //Met fin au tour du joueur
+        return true;
+
+    }
+
+    public Boolean avancerColLine(int col, int line , Plateau plateau) {
+        Case currentPos = this.getPosition();
+        String couleurPion = this.getCouleur();
+
+        Case nextCase = plateau.terrain[col][line];
+        if (nextCase.getStatus() && !nextCase.getPiece().getCouleur().equals(couleurPion)) {
+            System.out.println("Vous mangez " + nextCase.getPiece().getType() +' '+ nextCase.getPiece().getCouleur() + " de votre adversaire. ");
+            nextCase.getPiece().setEnJeux(false);
+
+        }else if (nextCase.getStatus() && nextCase.getPiece().getCouleur().equals(couleurPion)){
+            System.out.println("Une de vos piece se trouve déja sur cette case.");
+            return false;
+        }
+
+        System.out.println("La piece avance");
+        // L'ancienne case devient vide
+        currentPos.setStatus(false);
+        currentPos.setPiece(null);
+
+        // La position du pion change
+        this.setPosition(nextCase);
+
+        // La nouvelle case devient occupée
+        nextCase.setStatus(true);
+        nextCase.setPiece(this);
+
+        //Met fin au tour du joueur
+        return true;
 
     }
 

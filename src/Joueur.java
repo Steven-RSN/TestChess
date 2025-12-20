@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Joueur {
     private String nom;
     private String couleur;
@@ -8,7 +11,6 @@ public class Joueur {
         this.nom=nom;
         this.couleur=couleur;
     }
-
 
     public boolean isJoue() {
         return joue;
@@ -42,5 +44,16 @@ public class Joueur {
         this.nom = nom;
     }
 
+    public Pieces selectionPiece(Scanner scanner,Plateau plateau){
+
+        System.out.println("Colonne de la piece deplacer ?");
+        int colonne_piece_a_deplacer = scanner.nextInt();
+        System.out.println("Ligne de la piece deplacer ?");
+        int ligne_piece_a_deplacer = scanner.nextInt();
+
+        //pion_a_deplacer.deplacement_possibles(plateau);
+        //parcourir la tab de deplacement possible !!
+        return plateau.terrain[colonne_piece_a_deplacer][ligne_piece_a_deplacer].getPiece();
+    }
 
 }
