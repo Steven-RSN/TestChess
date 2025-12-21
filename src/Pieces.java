@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.util.Map;
 
-public class Pieces {
+public abstract class Pieces {
 
     private String couleur;
     private String nom;
@@ -68,12 +69,12 @@ public class Pieces {
     public void setType(String type) {
         this.type = type;
     }
-    public ArrayList<Case> deplacement_possibles(Plateau plateau) {
-        return  null;
-    };
+
     public Boolean avancerColLine(int col, int line , Plateau plateau) {
         return  null;
     }
+    public abstract ArrayList<Case> deplacement_possibles(Plateau plateau);
+    public abstract Map<String,ArrayList<Case>> deplacement_possiblesTEMP(Plateau plateau);
 /*  public void avancer(){
         Case pos = this.getPosition();
         System.out.println(pos);

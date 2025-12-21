@@ -1,5 +1,5 @@
 
-void main() {
+void main(String[] args) {
 
     //TODO :
     // Créer la class Lexique/commandes ?
@@ -9,9 +9,9 @@ void main() {
 
     //Info Joueur
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Nom du joueur qui joue les Blanc :");
+    System.out.println("- Nom du joueur qui joue les Blancs :");
     String j1Nom = scanner.next();
-    System.out.println("Nom du joueur qui joue les Noir");
+    System.out.println("- Nom du joueur qui joue les Noirs");
     String j2Nom = scanner.next();
 
     //Creation des joueur
@@ -23,15 +23,13 @@ void main() {
     partie.initPartie();
     partie.logo();
     partie.placerPieces();
-
-    plateau.printPlateauTexte();
     partie.lancerPartie();
 
 
 
 
     /*
-    Charset utf8Charset = Charset.forName("UTF-8");
+    Charset utf8Charset = Charsetk.forName("UTF-8");
     Charset defaultCharset = Charset.defaultCharset();
     System.out.println(defaultCharset);
 

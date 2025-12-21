@@ -57,23 +57,28 @@ public class Plateau {
             System.out.println("   ");
 
         };
+        System.out.println("  ");
+
     }
 
     public void printPlateauSchema(){
 
-        System.out.println("  _  _  _  _  B  _  _  _  _ ");
+        System.out.println("   _  _  _  _  _ B _  _  _  _  _");
+        System.out.println("  |                             |");
 
         for(int i =0 ; i<this.getLigneMax();i++) {
-            System.out.println("   ");
+             System.out.print("  |");
 
             for(int j =0 ; j<this.getColonneMax();j++) {
 
                 this.terrain[j][i].getCaseMemo();
             }
+            System.out.println("  |  ");
+
         };
-        System.out.println("  ");
-        System.out.println("    ");
-        System.out.println("  _  _  _  _  N  _  _  _  _ ");
+        System.out.println("  |                             | ");
+
+        System.out.println("  |  _  _  _  _  N  _  _  _  _  |");
 
 
     }

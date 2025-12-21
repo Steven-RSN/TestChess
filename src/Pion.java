@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Pion extends Pieces {
     private String unicode;
@@ -39,6 +40,11 @@ public class Pion extends Pieces {
 
         return deplacement_possibles;
     }
+
+    public Map<String, ArrayList<Case>> deplacement_possiblesTEMP(Plateau plateau) {
+        return null;
+    }
+
 
     //return True pour terminer le tour, sinon return false
     public Boolean avancer(Plateau plateau) {

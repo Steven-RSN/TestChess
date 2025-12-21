@@ -61,13 +61,14 @@ public class Case extends Plateau {
 
                 "| Position: " + this.posColonne + '-' + this.posLigne +
                         "  Couleur: " + this.couleur +
-                        "  Status: " + isOccuper() + " |"
+                        "  Status: " + isOccuper() + (this.getStatus() ? ":" + this.getPiece().getUnicode() : ' ') + " |"
         );
     }
 
     public void getCaseMemo() {
+        String emptyUnicode = "\u2007";
         System.out.print(
-                "   [" + (this.status ? this.getPiece().getUnicode(): "  ") + ']'
+                "   [" + (this.status ? this.getPiece().getUnicode() : emptyUnicode+" ") + ']'
         );
     }
 
