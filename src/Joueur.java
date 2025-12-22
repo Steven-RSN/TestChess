@@ -50,7 +50,6 @@ public class Joueur {
         int colonne_piece_a_deplacer = scanner.nextInt();
         System.out.println("Ligne de la piece deplacer ?");
         int ligne_piece_a_deplacer = scanner.nextInt();
-
         //pion_a_deplacer.deplacement_possibles(plateau);
         //parcourir la tab de deplacement possible !!
         return plateau.terrain[colonne_piece_a_deplacer][ligne_piece_a_deplacer].getPiece();

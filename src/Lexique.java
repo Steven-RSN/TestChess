@@ -6,38 +6,41 @@ public class Lexique {
 
     public void printAide() {
         System.out.println(
-                "                                                \n" +
-                        "    --  --  --  --  --  --  HELP  --  --  --  --  --  -- \n" +
-                        "  | |                                                  | |\n" +
-                        "  | |       jouer               Lance le tour          | |\n" +
-                        "  | |                                                  | |\n" +
-                        "  | |       --joueurs           Info sur les joueurs   | |\n" +
-                        "  | |                                                  | |\n" +
-                        "  | |       --plateau           Print le plateau       | |\n" +
-                        "  | |                                                  | |\n" +
-                        "  | |       --infoPlateau       Info sur le plateau    | |\n" +
-                        "  | |                                                  | |\n" +
-                        "  | |       --pieces            Liste les pieces       | |\n" +
-                        "  | |                                                  | |\n" +
-                        "  | |       --partie            Info sur la partie     | |\n" +
-                        "  | |                                                  | |\n" +
-                        "  | |__   __  __  __  __  __  _  __  __  __  __  __  __| |\n");
+                        "                                               \n" +
+                        "      * --  --  --  --  --  -- - HELP  - --  --  --  --  -- * \n" +
+                        "      | |                                                  | |\n" +
+                        "      | |       jouer               Lance le tour          | |\n" +
+                        "      | |                                                  | |\n" +
+                        "      | |       --joueurs           Info sur les joueurs   | |\n" +
+                        "      | |                                                  | |\n" +
+                        "      | |       --plateau           Print le plateau       | |\n" +
+                        "      | |                                                  | |\n" +
+                        "      | |       --infoPlateau       Info sur le plateau    | |\n" +
+                        "      | |                                                  | |\n" +
+                        "      | |       --pieces            Liste les pieces       | |\n" +
+                        "      | |                                                  | |\n" +
+                        "      | |       --partie            Info sur la partie     | |\n" +
+                        "      | |                                                  | |\n" +
+                        "      | |__   __  __  __  __  __  _  __  __  __  __  __  __| |" +
+                        "                               -- * --                         \n");
     }
-
+/*
+    NUL A CHIER !!!!
     public boolean jouerTour(Partie partie, Scanner scanner) {
         System.out.println("temp !");
-        return partie.tourJoueur(scanner);
+        return partie.tourJoueur(joueur ,scanner);
 
     }
+*/
 
-    ;
+
 
     public void joueurInfo(Joueur joueur) {
-        System.out.println(
-                "Nom: " + joueur.getNom() + " ;" +
-                        "Couleur: " + joueur.getCouleur() + " ;" +
-                        "Score: " + joueur.getScore() + " ;" +
-                        "Tour: " + joueur.isJoue() + " ;"
+        System.out.println("\n"+
+                        "   Nom: " + joueur.getNom() +
+                        "      Couleur: " + joueur.getCouleur() +"\n"+
+                        "   Score: " + joueur.getScore() +
+                        "        Tour: " + joueur.isJoue()+"\n "
         );
 
     }
