@@ -1,20 +1,17 @@
 
 void main(String[] args) {
 
-    //TODO :
-    // Créer la class Lexique/commandes ?
-
     //Creation du plateau (matrice de Case)
     Plateau plateau = new Plateau();
 
-    //Info Joueur
+    //Info Joueurs
     Scanner scanner = new Scanner(System.in);
     System.out.println("- Nom du joueur qui joue les Blancs :");
     String j1Nom = scanner.next();
     System.out.println("- Nom du joueur qui joue les Noirs");
     String j2Nom = scanner.next();
 
-    //Creation des joueur
+    //Creation des joueurs
     Joueur j1 = new Joueur(j1Nom, "Blanc");
     Joueur j2 = new Joueur(j2Nom, "Noir");
 
@@ -22,8 +19,11 @@ void main(String[] args) {
     Partie partie = new Partie(j1, j2,plateau);
     partie.initPartie();
     partie.logo();
-    partie.placerPieces();
+    partie.placerPieces2();   //- Tour
+    //partie.placerPieces(); //- Pion
     partie.lancerPartie();
+
+
 
 
 

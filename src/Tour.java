@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Tour extends Pieces {
 
@@ -9,56 +7,8 @@ public class Tour extends Pieces {
 
     }
 
-    @Override
-    public Map<String, ArrayList<Case>> deplacement_possiblesTEMP(Plateau plateau) {
-        return Map.of();
-    }
     public ArrayList<Case> deplacement_possibles(Plateau plateau) {
-        return null;
-    }
-
-    /*
-        public ArrayList<Case> deplacement_possibles(Plateau plateau) {
-
-            Case currentPos = this.getPosition();
-            String couleurPion = this.getCouleur();
-            DeplacementPossibleCol(currentPos.getPosColonne())
-            int direction = couleurPion.equals("Noir") ? -1 : +1;
-            int nextPosLine = currentPos.getPosLigne() + direction;
-
-            ArrayList<Case> deplacement_possibles = new ArrayList<>();
-
-            if (plateau.terrain[currentPos.getPosColonne()][nextPosLine].getStatus() == false) {
-                deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne(), nextPosLine));
-            }
-
-            if (currentPos.getPosColonne() + 1 < plateau.getColonneMax()) {
-                if (plateau.terrain[currentPos.getPosColonne() + 1][nextPosLine].getStatus() == true &&
-                        !plateau.terrain[currentPos.getPosColonne() + 1][nextPosLine].getPiece().getCouleur().equals(couleurPion)) {
-                    deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne() + 1, nextPosLine));
-                }
-            }
-            if (currentPos.getPosColonne() - 1 >= 0) {
-
-                if (plateau.terrain[currentPos.getPosColonne() - 1][nextPosLine].getStatus() == true &&
-                        !plateau.terrain[currentPos.getPosColonne() - 1][nextPosLine].getPiece().getCouleur().equals(couleurPion)) {
-                    deplacement_possibles.add(plateau.getCase(currentPos.getPosColonne() - 1, nextPosLine));
-                }
-            }
-
-            return deplacement_possibles;
-        }
-    /*
-        public ArrayList<Integer> DeplacementPossibleCol(int col){
-            int colActuel=col;
-            ArrayList<Integer> colPositive=
-
-            return
-        }
-    */
-    /*
-    public Map<String,ArrayList<Case>> deplacement_possibles(Plateau plateau) {
-        Map<String, ArrayList<Case>> deplacements = new HashMap<>();
+         ArrayList<Case> deplacements = new ArrayList<>();
 
         Case currentPos = this.getPosition();
         String couleurTour = this.getCouleur();
@@ -69,14 +19,12 @@ public class Tour extends Pieces {
         int maxCol = plateau.getColonneMax();
         int maxLine = plateau.getLigneMax();
 
-        String[] nomsDirections = {"haut", "bas", "droite", "gauche"};
+       // String[] nomsDirections = {"haut", "bas", "droite", "gauche"};
         int[][] directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 
         for (int d = 0; d < directions.length; d++) {
             int dc = directions[d][0];
             int dl = directions[d][1];
-
-            ArrayList<Case> casesDirection = new ArrayList<>();
 
             int nextCol = currentCol + dc;
             int nextLine = currentLine + dl;
@@ -85,10 +33,10 @@ public class Tour extends Pieces {
                 Case c = plateau.getCase(nextCol, nextLine);
 
                 if (!c.getStatus()) {
-                    casesDirection.add(c);
+                    deplacements.add(c);
                 } else {
                     if (!c.getPiece().getCouleur().equals(couleurTour)) {
-                        casesDirection.add(c);
+                        deplacements.add(c);
                     }
                     break;
                 }
@@ -96,14 +44,12 @@ public class Tour extends Pieces {
                 nextCol += dc;
                 nextLine += dl;
             }
-
-            deplacements.put(nomsDirections[d], casesDirection);
         }
 
         return deplacements;
     }
 
-    public static void printDeplacements2(Map<String, ArrayList<Case>> deplacements) {
+    /*public static void printDeplacements2(Map<String, ArrayList<Case>> deplacements) {
         for (String direction : deplacements.keySet()) {
             ArrayList<Case> cases = deplacements.get(direction);
 

@@ -71,16 +71,37 @@ public abstract class Pieces {
     }
 
     public Boolean avancerColLine(int col, int line , Plateau plateau) {
-        return  null;
+        Case currentPos = this.getPosition();
+        String couleurPion = this.getCouleur();
+
+        Case nextCase = plateau.terrain[col][line];
+        if (nextCase.getStatus() && !nextCase.getPiece().getCouleur().equals(couleurPion)) {
+            System.out.println("Vous mangez " + nextCase.getPiece().getType() +' '+ nextCase.getPiece().getCouleur() + " de votre adversaire. ");
+            nextCase.getPiece().setEnJeux(false);
+
+        }else if (nextCase.getStatus() && nextCase.getPiece().getCouleur().equals(couleurPion)){
+            System.out.println("Une de vos piece se trouve déja sur cette case.");
+            return false;
+        }
+
+        System.out.println("La piece avance");
+        // L'ancienne case devient vide
+        currentPos.setStatus(false);
+        currentPos.setPiece(null);
+
+        // La position du pion change
+        this.setPosition(nextCase);
+
+        // La nouvelle case devient occupée
+        nextCase.setStatus(true);
+        nextCase.setPiece(this);
+
+        //Met fin au tour du joueur
+        return true;
+
     }
+
+
     public abstract ArrayList<Case> deplacement_possibles(Plateau plateau);
-    public abstract Map<String,ArrayList<Case>> deplacement_possiblesTEMP(Plateau plateau);
-/*  public void avancer(){
-        Case pos = this.getPosition();
-        System.out.println(pos);
-        //if(){}
-     //   return setPosition();
-    }
-*/
 }
 

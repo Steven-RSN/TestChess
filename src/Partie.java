@@ -58,13 +58,13 @@ public class Partie {
 
         for (int i = 0; i < plateau.getColonneMax(); i++) {
             Case casePionN = plateau.terrain[i][plateau.getLigneMax() - 1];
-            Pion pionN = new Pion("Np" + (i + 1), "Noir", casePionN, "♖");
-            casePionN.setPiece(pionN);
+            Tour tourN = new Tour("Np" + (i + 1), "Noir", casePionN, "♖");
+            casePionN.setPiece(tourN);
             casePionN.setStatus(true);
 
             Case casePionB = plateau.terrain[i][0];
-            Pion pionB = new Pion("Bp" + (i + 1), "Blanc", casePionB, "♜");
-            casePionB.setPiece(pionB);
+            Tour tourB = new Tour("Bp" + (i + 1), "Blanc", casePionB, "♜");
+            casePionB.setPiece(tourB);
             casePionB.setStatus(true);
         }
 
@@ -110,11 +110,12 @@ public class Partie {
     public boolean tourJoueur(Joueur joueur ,Scanner scanner) {
         System.out.println("- C'est à " + joueur.getNom() + " (" + joueur.getCouleur() + ") de jouer");
         Pieces piecesChoisi = joueur.selectionPiece(scanner, plateau);
+
         if (piecesChoisi == null || !piecesChoisi.getCouleur().equals(joueur.getCouleur())) {
             System.out.println("- Vous n'avez pas de pièce à cet endroit");
             return true;
         }
-        ArrayList<Case> temp = new ArrayList<>();
+        ArrayList<Case> temp;
         System.out.println(piecesChoisi.getType());
 
         temp = (ArrayList<Case>) piecesChoisi.deplacement_possibles(plateau);
@@ -129,15 +130,6 @@ public class Partie {
             for (Case c : temp) {
                 System.out.println(c.getPosColonne() + "-" + c.getPosLigne());
                 deplacementTab.add(c.getPosColonne() + "-" + c.getPosLigne());
-
-                // Cases possible
-                /* for (int i = 0; i < temp.size(); i++) {
-                Case c = temp.get(i);
-                System.out.print(c.getPosColonne() + "-" + c.getPosLigne());
-                //  ajoute separateur
-                if (i < temp.size() - 1) {
-                    System.out.print(" -> ");
-                }*/
             }
         }
 
