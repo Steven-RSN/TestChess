@@ -42,15 +42,30 @@ public class Partie {
 
     public void placerPieces() {
         for (int i = 0; i < plateau.getColonneMax(); i++) {
-            Case casePionN = plateau.terrain[i][plateau.getLigneMax() - 1];
-            Pion pionN = new Pion("Np" + (i + 1), "Noir", casePionN, "♙");
-            casePionN.setPiece(pionN);
-            casePionN.setStatus(true);
+            if(plateau.terrain[i][plateau.getLigneMax() - 1] == plateau.terrain[getPlateau().getColonneMax()-1][plateau.getLigneMax() - 1]||plateau.terrain[i][plateau.getLigneMax() - 1]==plateau.terrain[0][plateau.getLigneMax() - 1]){
 
-            Case casePionB = plateau.terrain[i][0];
-            Pion pionB = new Pion("Bp" + (i + 1), "Blanc", casePionB, "♟");
-            casePionB.setPiece(pionB);
-            casePionB.setStatus(true);
+                Case casePionN = plateau.terrain[i][plateau.getLigneMax() - 1];
+                Tour tourN = new Tour("Np" + (i + 1), "Noir", casePionN, "♖");
+                casePionN.setPiece(tourN);
+                casePionN.setStatus(true);
+
+                Case casePionB = plateau.terrain[i][0];
+                Tour tourB = new Tour("Bp" + (i + 1), "Blanc", casePionB, "♜");
+                casePionB.setPiece(tourB);
+                casePionB.setStatus(true);
+
+            }else {
+
+                Case casePionN = plateau.terrain[i][plateau.getLigneMax() - 1];
+                Pion pionN = new Pion("Np" + (i + 1), "Noir", casePionN, "♙");
+                casePionN.setPiece(pionN);
+                casePionN.setStatus(true);
+
+                Case casePionB = plateau.terrain[i][0];
+                Pion pionB = new Pion("Bp" + (i + 1), "Blanc", casePionB, "♟");
+                casePionB.setPiece(pionB);
+                casePionB.setStatus(true);
+            }
         }
     }
 
@@ -93,13 +108,13 @@ public class Partie {
         System.out.print(
                 "       _\n" +
                         "    __|\\_\\     __   ___ ___ \n" +
-                        "   / __\\| |_\\ /\\__\\/\\__\\___\\ \n" +
+                        "   /\\__\\| |_\\ /\\__\\/\\__\\___\\ \n" +
                         "  / / __|  _ \\ / _ \\/ __/ __|\n" +
                         "  | | (_| | | |  __/\\__ \\__ \\\n" +
                         "    \\___|_| |_|\\___||___/___/\n" +
 
                         "            ___     _   ___  __ ____\n" +
-                        "           / ___\\  /\\\\ |\\__\\|\\__\\____\\\n" +
+                        "           /\\___\\  /\\\\ |\\__\\|\\__\\____\\\n" +
                         "          / / ___|/ / \\| |  \\/  |  ___|\n" +
                         "         | | |  _/ / _ \\ |      |  _|\n" +
                         "         | | |_| |/ ___ \\| |\\/| | |___\n" +
@@ -139,7 +154,7 @@ public class Partie {
         if (futureCase.equals("annuler")) {
             return true;
         } else if (deplacementTab.contains(futureCase)) {
-            System.out.println("Déplacement ok !");
+            //System.out.println("Déplacement ok !");
             String[] parts = futureCase.split("-");
             int colSaisie = Integer.parseInt(parts[0]);
             int ligSaisie = Integer.parseInt(parts[1]);
@@ -156,7 +171,7 @@ public class Partie {
     public void lancerPartie() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("  ");
-        System.out.println("- - - - - - |   *  La partie est lancé  *   | - - - - - -");
+        System.out.println("- - - - - |   *  La partie est lancé  *   | - - - - - ");
         System.out.println("  ");
         plateau.printPlateauSchema();
         System.out.println("  ");

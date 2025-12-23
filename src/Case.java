@@ -64,8 +64,21 @@ public class Case extends Plateau {
                         "  Status: " + isOccuper() + (this.getStatus() ? ":" + this.getPiece().getUnicode() : ' ') + " |"
         );
     }
+    public void getCaseInfo(int i,int j) {
+        System.out.print(
 
-    public void getCaseMemo() {
+                "| Position: " + this.posColonne + '-' + this.posLigne +
+                        "  Couleur: " + this.couleur +
+                        "  Status: " + isOccuper() + (this.getStatus() ? ":" + this.getPiece().getUnicode() : ' ') + " |"
+        );
+    }
+
+    public void getCaseMemo(int i,int j) {
+        String emptyUnicode = "\u2007";
+        System.out.print(
+                i+"   [" + (this.status ? this.getPiece().getUnicode() : emptyUnicode+" ") + ']'
+        );
+    }public void getCaseMemo() {
         String emptyUnicode = "\u2007";
         System.out.print(
                 "   [" + (this.status ? this.getPiece().getUnicode() : emptyUnicode+" ") + ']'

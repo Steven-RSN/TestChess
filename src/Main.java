@@ -19,8 +19,8 @@ void main(String[] args) {
     Partie partie = new Partie(j1, j2,plateau);
     partie.initPartie();
     partie.logo();
-    partie.placerPieces2();   //- Tour
-    //partie.placerPieces(); //- Pion
+    //partie.placerPieces2();   //- Tour
+    partie.placerPieces(); //- Pion
     partie.lancerPartie();
 
 

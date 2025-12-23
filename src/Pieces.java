@@ -76,7 +76,7 @@ public abstract class Pieces {
 
         Case nextCase = plateau.terrain[col][line];
         if (nextCase.getStatus() && !nextCase.getPiece().getCouleur().equals(couleurPion)) {
-            System.out.println("Vous mangez " + nextCase.getPiece().getType() +' '+ nextCase.getPiece().getCouleur() + " de votre adversaire. ");
+            System.out.println(" * Vous mangez " + nextCase.getPiece().getType() +' '+ nextCase.getPiece().getCouleur() + " de votre adversaire! * ");
             nextCase.getPiece().setEnJeux(false);
 
         }else if (nextCase.getStatus() && nextCase.getPiece().getCouleur().equals(couleurPion)){
